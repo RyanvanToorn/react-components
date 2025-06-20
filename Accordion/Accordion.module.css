@@ -1,0 +1,73 @@
+/* Root ~ Any class in this .module.css file is scoped to the component (CSS Modules) */
+/* ===== Wrapper Component ===== */
+.Accordion {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-s);
+}
+
+/* ===== Accordion Item ===== */
+.AccordionItem {
+  display: block;
+  border: 1px solid var(--color-neutral-4);
+}
+
+/* ===== Accordion Item Header ===== */
+.AccordionItemHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--space-s);
+}
+
+.AccordionItemHeaderLeft,
+.AccordionItemHeaderRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.AccordionItemHeaderTitle {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+}
+
+.AccordionItemHeaderSubtitle {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+}
+
+/* ===== Accordion Item Content ===== */
+.AccordionItemContent {
+  border-top: 1px solid var(--color-neutral-4);
+  padding: var(--space-s);
+  opacity: 1;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.accordion-item--collapsed .AccordionItemContent {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: none;
+}
+
+/* ===== Expand All ===== */
+.AccordionExpandAllContainer {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 30px;
+}
+
+.AccordionExpandAllButton {
+  padding: var(--space-m);
+  border: 0;
+  border-radius: var(--space-xs);
+  background-color: inherit;
+}
+
+.AccordionExpandAllButton:hover {
+  background-color: var(--color-neutral-2);
+}

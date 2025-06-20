@@ -1,0 +1,57 @@
+/* Root ~ Any class in this .module.css file is scoped to the component (CSS Modules) */
+/* ===== Tabs ===== */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Container for the tab headers*/
+.tabHeaderDiv {
+  margin-bottom: var(--space-s);
+  display: flex;
+  min-width: 100%;
+}
+
+/* Container for the tab items */
+.tabItemsDiv {
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-grow: 1;
+}
+
+/* ===== Tab Header ===== */
+.tabHeader {
+  border: 1px solid var(--color-neutral-3);
+  padding: var(--space-s) var(--space-l);
+}
+
+/* Selected tab's header */
+.tabHeaderActive {
+  font-weight: var(--font-weight-bold);
+  border-bottom: 2px solid var(--color-neutral-5);
+  background-color: var(--color-neutral-1);
+}
+
+.tabHeaderActive:hover {
+  background-color: var(--color-neutral-2);
+}
+
+/* Non-selected tab's header */
+.tabHeaderInactive {
+  font-weight: var(--font-weight-normal);
+}
+
+.tabHeaderInactive:hover {
+  background-color: var(--color-neutral-1);
+  font-weight: var(--font-weight-normal);
+}
+
+/* ===== Tab Item ===== */
+.tabItem {
+  display: block;
+  flex-grow: 1;
+  transition: opacity 0.3s ease;
+}
