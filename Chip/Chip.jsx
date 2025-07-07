@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Chip.module.css";
 
-export default function Chip({ text = "Chip", onClick = () => {}, isEnabled = false, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export function Chip({ text = "Chip", onClick = () => {}, isEnabled = false, isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
 
   return (

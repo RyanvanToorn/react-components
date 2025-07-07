@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Tag.module.css";
 
-export default function Tag({
+export function Tag({
   text = "Tag",
   fillColor = "--color-green-medium",
   textColor = "--color-white",

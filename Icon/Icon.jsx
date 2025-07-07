@@ -12,7 +12,7 @@ import styles from "./Icon.module.css";
 /* === States === */
 
 /* === Functions === */
-export default function Icon({ icon = "search", isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export function Icon({ icon = "search", isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
 
   return <i className={`icon fa fa-${icon} ${styles.icon} ${extendedClass}`} aria-hidden="true" style={inlineStyles} />;

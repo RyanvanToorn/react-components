@@ -10,7 +10,7 @@ import TabItem from "./TabItem";
  * @returns {JSX.Element}
  */
 
-export default function Tabs({ headers = [], items = [], isVertical = false, defaultTab = 0, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export function Tabs({ headers = [], items = [], isVertical = false, defaultTab = 0, isVisible = true, extendedClass = "", inlineStyles = {} }) {
   const [activeTab, setActiveTab] = useState(defaultTab);
 
   if (!isVisible) return null;

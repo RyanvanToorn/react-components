@@ -9,7 +9,7 @@ import styles from "./Banner.module.css";
  * @returns {JSX.Element}
  */
 
-export default function Banner({ contents = {}, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export function Banner({ contents = {}, isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
 
   return (

@@ -8,15 +8,7 @@ import styles from "./Tabs.module.css";
  * @returns {JSX.Element}
  */
 
-export default function TabHeader({
-  title = "title",
-  isCurrentTab = false,
-  onClick = () => {},
-  isEnabled = true,
-  isVisible = true,
-  extendedClass = "",
-  inlineStyles,
-}) {
+export function TabHeader({ title = "title", isCurrentTab = false, onClick = () => {}, isEnabled = true, isVisible = true, extendedClass = "", inlineStyles }) {
   if (!isVisible) return null;
 
   return (

@@ -8,7 +8,7 @@ import styles from "./Tabs.module.css";
  * @returns {JSX.Element}
  */
 
-export default function TabItem({ isCurrentTab = false, content = <div></div>, extendedClass = "", inlineStyles = {} }) {
+export function TabItem({ isCurrentTab = false, content = <div></div>, extendedClass = "", inlineStyles = {} }) {
   if (!isCurrentTab) return null;
 
   return (

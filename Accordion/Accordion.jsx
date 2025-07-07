@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Accordion.module.css";
 import Icon from "../Icon/Icon.jsx";
 
-function Accordion({ items = [], isExpandAllVisible = false, isExpandAllEnabled = true, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export function Accordion({ items = [], isExpandAllVisible = false, isExpandAllEnabled = true, isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
   if (!items || items.length === 0) return null;
 
@@ -103,4 +103,3 @@ function AccordionExpandAll({ onExpandAll, isAllExpanded = false, isVisible = fa
     </div>
   );
 }
-export default Accordion;

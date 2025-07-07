@@ -10,7 +10,7 @@ import NavbarItem from "./NavbarItem";
  * @returns {JSX.Element}
  */
 
-export default function Navbar({ items = [], defaultItem = "", isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export function Navbar({ items = [], defaultItem = "", isVisible = true, extendedClass = "", inlineStyles = {} }) {
   const [activeItem, setActiveItem] = useState(() => {
     if (!defaultItem) return undefined;
     return items.find((item) => item.key === defaultItem);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Popup.module.css";
 
-function Popup({
+export function Popup({
   isOpen = false,
   title = "",
   subtitle = "",
@@ -81,5 +81,3 @@ const ExpandButton = ({ onExpand, isVisible = false }) => {
     </button>
   );
 };
-
-export default Popup;

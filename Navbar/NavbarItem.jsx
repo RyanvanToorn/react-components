@@ -9,7 +9,7 @@ import styles from "./Navbar.module.css";
  * @returns {JSX.Element}
  */
 
-export default function NavbarItem({
+export function NavbarItem({
   onClick = () => {},
   iconName = "house",
   label = "",

@@ -13,7 +13,7 @@ import styles from "./Card.module.css";
 
 /* === Functions === */
 
-export default function Card({ headerContents = null, bodyContents = null, footerContents = null, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export function Card({ headerContents = null, bodyContents = null, footerContents = null, isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
 
   return (

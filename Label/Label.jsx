@@ -9,7 +9,7 @@ import styles from "./Label.module.css";
  * @returns {JSX.Element}
  */
 
-export default function Label({ text = "", isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export function Label({ text = "", isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
 
   return (
