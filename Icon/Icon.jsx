@@ -9,9 +9,6 @@ import styles from "./Icon.module.css";
  * @returns {JSX.Element}
  */
 
-/* === States === */
-
-/* === Functions === */
 export function Icon({ icon = "search", isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
 

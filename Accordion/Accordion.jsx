@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import styles from "./Accordion.module.css";
 import Icon from "../Icon/Icon.jsx";
 
+/**
+ * Accordion Component
+ * Used for displaying various content with collapsible accordion items.
+ *
+ * @param {object} props - Component props
+ * @returns {JSX.Element}
+ */
+
 export function Accordion({ items = [], isExpandAllVisible = false, isExpandAllEnabled = true, isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
   if (!items || items.length === 0) return null;

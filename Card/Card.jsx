@@ -9,10 +9,6 @@ import styles from "./Card.module.css";
  * @returns {JSX.Element}
  */
 
-/* === States === */
-
-/* === Functions === */
-
 export function Card({ headerContents = null, bodyContents = null, footerContents = null, isVisible = true, extendedClass = "", inlineStyles = {} }) {
   if (!isVisible) return null;
 

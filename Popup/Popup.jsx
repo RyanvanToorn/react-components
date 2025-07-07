@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Popup.module.css";
 
+/**
+ * Popup Component
+ * Used for displaying content in a popup form.
+ *
+ * @param {object} props - Component props
+ * @returns {JSX.Element}
+ */
+
 export function Popup({
   isOpen = false,
   title = "",

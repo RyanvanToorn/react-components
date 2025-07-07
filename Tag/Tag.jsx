@@ -1,6 +1,14 @@
 import React from "react";
 import styles from "./Tag.module.css";
 
+/**
+ * Tag Component
+ * Used for displaying text or other content in a minimalist form.
+ *
+ * @param {object} props - Component props
+ * @returns {JSX.Element}
+ */
+
 export function Tag({
   text = "Tag",
   fillColor = "--color-green-medium",
