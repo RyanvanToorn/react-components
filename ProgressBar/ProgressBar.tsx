@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./ProgressBar.module.css";
+import Styles from "./ProgressBar.module.css";
+import type { ProgressBarProps } from "./ProgressBar.types";
 
 /**
  * ProgressBar Component
@@ -9,8 +10,14 @@ import styles from "./ProgressBar.module.css";
  * @returns {JSX.Element}
  */
 
-export function ProgressBar({ isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const ProgressBar: React.FC<ProgressBarProps> = ({ progress, isVisible = true, extendedClass = "", inlineStyles = {} }) => {
   if (!isVisible) return null;
 
-  return <div className={`progess-bar ${styles.ProgressBar}`}></div>;
-}
+  const clampedProgress = Math.max(0, Math.min(100, progress));
+
+  return (
+    <div className={`${Styles.ProgressBar} progress-bar ${extendedClass}`} style={inlineStyles}>
+      <div className={`${Styles.ProgressBarFill} progress-bar-filled`} style={{ width: `${clampedProgress}%` }} />
+    </div>
+  );
+};
