@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Label.module.css";
+import Styles from "./Label.module.css";
+import type { LabelProps } from "./Label.types";
 
 /**
  * Label Component
@@ -9,12 +10,12 @@ import styles from "./Label.module.css";
  * @returns {JSX.Element}
  */
 
-export function Label({ text = "", isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const Label: React.FC<LabelProps> = ({ text = "", isVisible = true, extendedClass = "", inlineStyles = {} }) => {
   if (!isVisible) return null;
 
   return (
-    <label className={`label ${styles.label} ${extendedClass}`} style={inlineStyles}>
+    <label className={`${Styles.label} label ${extendedClass}`} style={inlineStyles}>
       {text}
     </label>
   );
-}
+};
