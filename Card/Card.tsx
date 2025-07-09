@@ -10,21 +10,14 @@ import type { CardProps } from "./Card.types";
  * @returns {JSX.Element}
  */
 
-export const Card: React.FC<CardProps> = ({
-  headerContents = null,
-  bodyContents = null,
-  footerContents = null,
-  isVisible = true,
-  extendedClass = "",
-  inlineStyles = {},
-}) => {
+export const Card: React.FC<CardProps> = ({ header = null, footer = null, children, isVisible = true, extendedClass = "", inlineStyles = {} }) => {
   if (!isVisible) return null;
 
   return (
     <div className={`card ${Styles.card} ${extendedClass}`} style={inlineStyles}>
-      <div className={Styles.cardHeader}>{headerContents}</div>
-      <div className={Styles.cardBody}>{bodyContents}</div>
-      <div className={Styles.cardFooter}>{footerContents}</div>
+      <div className={Styles.cardHeader}>{header}</div>
+      <div className={Styles.cardBody}>{children}</div>
+      <div className={Styles.cardFooter}>{footer}</div>
     </div>
   );
 };
