@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from "./SwitchToggle.module.css";
+import Styles from "./SwitchToggle.module.css";
+import type { SwitchToggleProps } from "./SwitchToggle.types";
 
 /**
  * Switch Toggle component
@@ -9,7 +10,13 @@ import styles from "./SwitchToggle.module.css";
  * @returns {JSX.Element}
  */
 
-export function SwitchToggle({ defaultChecked = false, onToggle = () => {}, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const SwitchToggle: React.FC<SwitchToggleProps> = ({
+  defaultChecked = false,
+  onToggle = () => {},
+  isVisible = true,
+  extendedClass = "",
+  inlineStyles = {},
+}) => {
   if (!isVisible) return null;
 
   const [isChecked, setIsChecked] = useState(defaultChecked);
@@ -22,11 +29,11 @@ export function SwitchToggle({ defaultChecked = false, onToggle = () => {}, isVi
 
   return (
     <input
-      className={`switch-toggle ${styles.switchToggle} ${extendedClass}`}
+      className={`${Styles.switchToggle} switch-toggle ${extendedClass}`}
       style={inlineStyles}
       type="checkbox"
       checked={isChecked}
       onChange={handleChange}
     />
   );
-}
+};
