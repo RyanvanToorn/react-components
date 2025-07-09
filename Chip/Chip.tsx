@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Chip.module.css";
+import Styles from "./Chip.module.css";
+import type { ChipProps } from "./Chip.types";
 
 /**
  * Chip Component
@@ -9,16 +10,23 @@ import styles from "./Chip.module.css";
  * @returns {JSX.Element}
  */
 
-export function Chip({ text = "Chip", onClick = () => {}, isEnabled = false, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const Chip: React.FC<ChipProps> = ({
+  text = "Chip",
+  onClick = () => {},
+  isEnabled = false,
+  isVisible = true,
+  extendedClass = "",
+  inlineStyles = {},
+}) => {
   if (!isVisible) return null;
 
   return (
     <div
-      className={`chip ${isEnabled ? styles.ChipEnabled : styles.ChipDisabled} ${styles.Chip} ${extendedClass}`}
+      className={`${Styles.Chip} chip ${isEnabled ? Styles.ChipEnabled : Styles.ChipDisabled}  ${extendedClass}`}
       style={inlineStyles}
-      onClick={isEnabled ? onClick : null}
+      onClick={isEnabled ? onClick : undefined}
     >
       {text}
     </div>
   );
-}
+};
