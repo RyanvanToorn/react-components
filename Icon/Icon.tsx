@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Icon.module.css";
+import Styles from "./Icon.module.css";
+import type { IconProps } from "./Icon.types";
 
 /**
  * Icon Component
@@ -9,8 +10,8 @@ import styles from "./Icon.module.css";
  * @returns {JSX.Element}
  */
 
-export function Icon({ icon = "search", isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const Icon: React.FC<IconProps> = ({ icon = "search", isVisible = true, extendedClass = "", inlineStyles = {} }) => {
   if (!isVisible) return null;
 
-  return <i className={`icon fa fa-${icon} ${styles.icon} ${extendedClass}`} aria-hidden="true" style={inlineStyles} />;
-}
+  return <i className={`icon fa fa-${icon} ${Styles.icon} ${extendedClass}`} aria-hidden="true" style={inlineStyles} />;
+};
