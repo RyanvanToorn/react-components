@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Popup.module.css";
+import Styles from "./Popup.module.css";
+import * as types from "./Popup.types";
 
 /**
  * Popup Component
@@ -9,7 +10,7 @@ import styles from "./Popup.module.css";
  * @returns {JSX.Element}
  */
 
-export function Popup({
+export const Popup: React.FC<types.PopupProps> = ({
   isOpen = false,
   title = "",
   subtitle = "",
@@ -19,7 +20,7 @@ export function Popup({
   isVisible = true,
   extendedClass = "",
   inlineStyles = {},
-}) {
+}) => {
   const [isPopupOpen, setIsOpen] = useState(isOpen);
 
   useEffect(() => {
@@ -36,55 +37,55 @@ export function Popup({
 
   return (
     <div>
-      <div className={`popup-backdrop ${styles.PopupBackdrop}`}></div>
-      <div className={`popup ${styles.Popup} ${extendedClass}`} style={inlineStyles}>
+      <div className={`popup-backdrop ${Styles.PopupBackdrop}`}></div>
+      <div className={`popup ${Styles.Popup} ${extendedClass}`} style={inlineStyles}>
         <PopupHeader title={title} subtitle={subtitle} showCloseButton={showCloseButton} onClose={closePopup} />
         <PopupContent bodyContents={bodyContents} />
         <PopupFooter footerContents={footerContents} />
       </div>
     </div>
   );
-}
+};
 
 /* ===== Sub Components ===== */
 
-const PopupHeader = ({ title, subtitle, onClose, showCloseButton }) => {
+const PopupHeader: React.FC<types.PopupHeaderProps> = ({ title = "", subtitle = "", onClose, showCloseButton }) => {
   return (
-    <div className={`popup-header ${styles.PopupHeader}`}>
-      <div className={`${styles.PopupHeaderLayoutContainerLeft} `}>
-        <div className={`popup-header__title ${styles.PopupHeaderTitle}`}>{title}</div>
-        <div className={`popup-header__subtitle ${styles.PopupHeaderSubtitle}`}>{subtitle}</div>
+    <div className={`popup-header ${Styles.PopupHeader}`}>
+      <div className={`${Styles.PopupHeaderLayoutContainerLeft} `}>
+        <div className={`popup-header__title ${Styles.PopupHeaderTitle}`}>{title}</div>
+        <div className={`popup-header__subtitle ${Styles.PopupHeaderSubtitle}`}>{subtitle}</div>
       </div>
-      <div className={`${styles.PopupHeaderLayoutContainerRight} `}>
+      <div className={`${Styles.PopupHeaderLayoutContainerRight} `}>
         <CloseButton onClose={onClose} isVisible={showCloseButton} />
       </div>
     </div>
   );
 };
 
-const PopupContent = ({ bodyContents }) => {
-  return <div className={`popup-content ${styles.PopupContent}`}>{bodyContents}</div>;
+const PopupContent: React.FC<types.PopupContentProps> = ({ bodyContents = null }) => {
+  return <div className={`popup-content ${Styles.PopupContent}`}>{bodyContents}</div>;
 };
 
-const PopupFooter = ({ footerContents }) => {
-  return <div className={`popup-footer ${styles.PopupFooter}`}>{footerContents}</div>;
+const PopupFooter: React.FC<types.PopupFooterProps> = ({ footerContents }) => {
+  return <div className={`popup-footer ${Styles.PopupFooter}`}>{footerContents}</div>;
 };
 
-const CloseButton = ({ onClose, isVisible = false }) => {
+const CloseButton: React.FC<types.CloseButtonProps> = ({ onClose, isVisible = false }) => {
   if (!isVisible) return null;
 
   return (
-    <button className={`popup-close-button ${styles.CloseButton}`} onClick={onClose}>
+    <button className={`popup-close-button ${Styles.CloseButton}`} onClick={onClose}>
       ❌
     </button>
   );
 };
 
-const ExpandButton = ({ onExpand, isVisible = false }) => {
+const ExpandButton: React.FC<types.ExpandButtonProps> = ({ onExpand = () => {}, isVisible = false }) => {
   if (!isVisible) return null;
 
   return (
-    <button className={`popup-close-button ${styles.CloseButton}`} onClick={onClose}>
+    <button className={`popup-close-button ${Styles.CloseButton}`} onClick={onExpand}>
       ❌
     </button>
   );
