@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Tag.module.css";
+import Styles from "./Tag.module.css";
+import type { TagProps } from "./Tag.types";
 
 /**
  * Tag Component
@@ -9,19 +10,19 @@ import styles from "./Tag.module.css";
  * @returns {JSX.Element}
  */
 
-export function Tag({
+export const Tag: React.FC<TagProps> = ({
   text = "Tag",
   fillColor = "--color-green-medium",
   textColor = "--color-white",
   isVisible = true,
   extendedClass = "",
   inlineStyles = {},
-}) {
+}) => {
   if (!isVisible) return null;
 
   return (
     <div
-      className={`tag ${styles.Tag} ${extendedClass}`}
+      className={`${Styles.Tag} tag ${extendedClass}`}
       style={{
         ...inlineStyles,
         backgroundColor: `var(${fillColor})`,
@@ -31,4 +32,4 @@ export function Tag({
       {text}
     </div>
   );
-}
+};
