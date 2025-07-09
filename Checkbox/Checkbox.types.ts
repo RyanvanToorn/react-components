@@ -1,3 +1,7 @@
 import type { StandardProps } from "../../Common/Types/standard.types";
 
-export interface Checkbox extends StandardProps {}
+export interface CheckboxProps extends StandardProps {
+  isChecked: boolean;
+  isEnabled?: boolean;
+  onChange: (checked: boolean) => void;
+}
