@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Banner.module.css";
+import Styles from "./Banner.module.css";
+import type { BannerProps } from "./Banner.types";
 
 /**
  * Banner Component
@@ -9,12 +10,12 @@ import styles from "./Banner.module.css";
  * @returns {JSX.Element}
  */
 
-export function Banner({ contents = {}, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const Banner: React.FC<BannerProps> = ({ children = null, isVisible = true, extendedClass = "", inlineStyles = {} }) => {
   if (!isVisible) return null;
 
   return (
-    <div className={`banner ${styles.Banner} ${extendedClass}`} style={inlineStyles}>
-      {contents}
+    <div className={`banner ${Styles.Banner} ${extendedClass}`} style={inlineStyles}>
+      {children}
     </div>
   );
-}
+};
