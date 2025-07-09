@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Tabs.module.css";
+import Styles from "./Tabs.module.css";
+import type { TabItemProps } from "./Tabs.types";
 
 /**
  * Tab Item Component for navigating content within the same view.
@@ -8,12 +9,12 @@ import styles from "./Tabs.module.css";
  * @returns {JSX.Element}
  */
 
-export function TabItem({ isCurrentTab = false, content = <div></div>, extendedClass = "", inlineStyles = {} }) {
+export const TabItem: React.FC<TabItemProps> = ({ isCurrentTab = false, content = <div></div>, extendedClass = "", inlineStyles = {} }) => {
   if (!isCurrentTab) return null;
 
   return (
-    <div className={`tab-item ${styles.tabItem} ${extendedClass}`} style={inlineStyles}>
+    <div className={`${Styles.tabItem} tab-item ${extendedClass}`} style={inlineStyles}>
       {content}
     </div>
   );
-}
+};
