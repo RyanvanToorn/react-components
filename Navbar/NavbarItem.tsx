@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./Navbar.module.css";
+import Styles from "./Navbar.module.css";
+import type { NavbarItemProps } from "./Navbar.types";
 
 /**
  * Dynamic Navbar Item Component for responsive devices
@@ -9,7 +10,7 @@ import styles from "./Navbar.module.css";
  * @returns {JSX.Element}
  */
 
-export function NavbarItem({
+export const NavbarItem: React.FC<NavbarItemProps> = ({
   onClick = () => {},
   iconName = "house",
   label = "",
@@ -18,21 +19,21 @@ export function NavbarItem({
   isVisible = true,
   extendedClass = "",
   inlineStyles = {},
-}) {
+}) => {
   if (!isVisible) return null;
 
   return (
     <div
-      className={`navbar-item ${styles.navbarItem} ${isSelected ? styles.navbarItemSelected : styles.navbarItemUnselected}  ${extendedClass}`}
+      className={`navbar-item ${Styles.navbarItem} ${isSelected ? Styles.navbarItemSelected : Styles.navbarItemUnselected}  ${extendedClass}`}
       style={inlineStyles}
-      onClick={isEnabled ? onClick : null}
+      onClick={isEnabled ? onClick : undefined}
     >
-      <div className={`navbar-item__icon-div ${styles.navbarItemIconDiv}`}>
-        <i className={`navbar-item__icon fa-${iconName} fa icon ${styles.navbarItemIcon}`}></i>
+      <div className={`navbar-item__icon-div ${Styles.navbarItemIconDiv}`}>
+        <i className={`navbar-item__icon fa-${iconName} fa icon ${Styles.navbarItemIcon}`}></i>
       </div>
-      <div className={`navbar-item__label-div ${styles.navbarItemLabelDiv}`}>
-        <label className={`navbar-item__label ${styles.navbarItemLabel}`}>{label}</label>
+      <div className={`navbar-item__label-div ${Styles.navbarItemLabelDiv}`}>
+        <label className={`navbar-item__label ${Styles.navbarItemLabel}`}>{label}</label>
       </div>
     </div>
   );
-}
+};

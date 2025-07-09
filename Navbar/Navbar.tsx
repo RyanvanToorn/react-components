@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Navbar.module.css";
-import NavbarItem from "./NavbarItem";
+import Styles from "./Navbar.module.css";
+import { NavbarItem } from "./NavbarItem";
+import type { NavbarProps } from "./Navbar.types";
 
 /**
  * Dynamic Navbar Component for responsive devices
@@ -10,22 +11,22 @@ import NavbarItem from "./NavbarItem";
  * @returns {JSX.Element}
  */
 
-export function Navbar({ items = [], defaultItem = "", isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const Navbar: React.FC<NavbarProps> = ({ items = [], defaultItem = "", isVisible = true, extendedClass = "", inlineStyles = {} }) => {
   const [activeItem, setActiveItem] = useState(() => {
     if (!defaultItem) return undefined;
     return items.find((item) => item.key === defaultItem);
   });
 
-  const [responsiveClass, setResponsiveClass] = useState(styles.navbarDesktop);
+  const [responsiveClass, setResponsiveClass] = useState(Styles.navbarDesktop);
 
   useEffect(() => {
     function updateResponsiveClass() {
       if (window.innerWidth < 640) {
-        setResponsiveClass(styles.navbarPhone);
+        setResponsiveClass(Styles.navbarPhone);
       } else if (window.innerWidth < 1024) {
-        setResponsiveClass(styles.navbarTablet);
+        setResponsiveClass(Styles.navbarTablet);
       } else {
-        setResponsiveClass(styles.navbarDesktop);
+        setResponsiveClass(Styles.navbarDesktop);
       }
     }
     updateResponsiveClass();
@@ -40,8 +41,8 @@ export function Navbar({ items = [], defaultItem = "", isVisible = true, extende
   if (!isVisible) return null;
 
   return (
-    <div className={`navbar ${responsiveClass} ${styles.navbar} ${extendedClass}`} style={inlineStyles}>
-      <div className={`navbar__items-div ${styles.navbarItemsDiv}`}>
+    <div className={`navbar ${responsiveClass} ${Styles.navbar} ${extendedClass}`} style={inlineStyles}>
+      <div className={`navbar__items-div ${Styles.navbarItemsDiv}`}>
         {items.map((item) => (
           <NavbarItem
             key={item.key}
@@ -58,4 +59,4 @@ export function Navbar({ items = [], defaultItem = "", isVisible = true, extende
       </div>
     </div>
   );
-}
+};
