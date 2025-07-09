@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styles from "./Accordion.module.css.js";
-import Icon from "../Icon/Icon.jsx";
-import type { AccordionProps } from "./Accordion.types.js";
+import Styles from "./Accordion.module.css";
+import { Icon } from "../Icon/Icon";
+import { AccordionItem } from "./AccordionItem";
+import type { AccordionProps } from "./Accordion.types";
 
 /**
  * Accordion Component
@@ -11,7 +12,14 @@ import type { AccordionProps } from "./Accordion.types.js";
  * @returns {JSX.Element}
  */
 
-export function Accordion({ items = [], isExpandAllVisible = false, isExpandAllEnabled = true, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const Accordion: React.FC<AccordionProps> = ({
+  items = [],
+  isExpandAllVisible = false,
+  isExpandAllEnabled = true,
+  isVisible = true,
+  extendedClass = "",
+  inlineStyles = {},
+}) => {
   if (!isVisible) return null;
   if (!items || items.length === 0) return null;
 
@@ -19,12 +27,12 @@ export function Accordion({ items = [], isExpandAllVisible = false, isExpandAllE
   const [expanded, setExpanded] = useState(items.map((item) => !!item.startExpanded));
 
   // Toggle a single item
-  const handleToggle = (idx) => {
+  const handleToggle = (idx: number) => {
     setExpanded((prev) => prev.map((val, i) => (i === idx ? !val : val)));
   };
 
   // Expand or collapse all
-  const handleExpandAll = (expand) => {
+  const handleExpandAll = (expand: boolean) => {
     setExpanded(items.map(() => expand));
   };
 
@@ -32,7 +40,7 @@ export function Accordion({ items = [], isExpandAllVisible = false, isExpandAllE
   const isAllExpanded = expanded.every(Boolean);
 
   return (
-    <div className={`accordion ${styles.Accordion} ${extendedClass}`} style={inlineStyles}>
+    <div className={`accordion ${Styles.Accordion} ${extendedClass}`} style={inlineStyles}>
       <div className="accordion__expand-all-container">
         <AccordionExpandAll
           isVisible={isExpandAllVisible}
@@ -58,54 +66,29 @@ export function Accordion({ items = [], isExpandAllVisible = false, isExpandAllE
       </div>
     </div>
   );
-}
+};
 
-function AccordionItem({
-  title = "",
-  subtitle = "",
-  content = <div></div>,
-  isExpanded = false,
-  onToggle = () => {},
-  isVisible = true,
+function AccordionExpandAll({
+  onExpandAll,
+  isAllExpanded = false,
+  isVisible = false,
   isEnabled = true,
-  extendedClass = "",
+}: {
+  onExpandAll: () => void;
+  isAllExpanded?: boolean;
+  isVisible?: boolean;
+  isEnabled?: boolean;
 }) {
   if (!isVisible) return null;
 
   return (
-    <div
-      className={`accordion-item ${styles.AccordionItem} ${extendedClass} ${
-        isExpanded ? `${styles.AccordionitemExpanded} accordion-item--expanded` : `${styles.AccordionItemCollapsed} accordion-item--collapsed`
-      }`}
-    >
-      <div
-        className={`accordion-item__header ${styles.AccordionItemHeader}`}
-        onClick={isEnabled ? onToggle : undefined}
-        style={{ cursor: isEnabled ? "pointer" : "not-allowed" }}
-      >
-        <div className={styles.AccordionItemHeaderLeft}>
-          <div className={`accordion-item__header-title ${styles.AccordionItemHeaderTitle}`}>{title}</div>
-          <div className={`accordion-item__header-subtitle ${styles.AccordionItemHeaderSubtitle}`}>{subtitle}</div>
-        </div>
-        <div className={styles.AccordionItemHeaderRight}>
-          <Icon icon={isExpanded ? "chevron-up" : "chevron-down"} />
-        </div>
-      </div>
-      {isExpanded && <div className={`accordion-item__content ${styles.AccordionItemContent}`}>{content}</div>}
-    </div>
-  );
-}
-
-function AccordionExpandAll({ onExpandAll, isAllExpanded = false, isVisible = false, isEnabled = true }) {
-  if (!isVisible) return null;
-
-  return (
-    <div className={`accordion-expand-all-container ${styles.AccordionExpandAllContainer}`}>
+    <div className={`accordion-expand-all-container ${Styles.AccordionExpandAllContainer}`}>
       <button
-        className={`accordion-expand-all-button ${styles.AccordionExpandAllButton} ${
-          isEnabled ? `${styles.AccordionExpandAllButtonEnabled}` : `${styles.AccordionExpandAllButtonDisabled}}`
+        className={`accordion-expand-all-button ${Styles.AccordionExpandAllButton} ${
+          isEnabled ? Styles.AccordionExpandAllButtonEnabled : Styles.AccordionExpandAllButtonDisabled
         }`}
         onClick={onExpandAll}
+        disabled={!isEnabled}
       >
         <Icon icon={isAllExpanded ? "angle-double-up" : "angle-double-down"} />
       </button>
