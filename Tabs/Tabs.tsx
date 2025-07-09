@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styles from "./Tabs.module.css";
-import TabHeader from "./TabHeader";
-import TabItem from "./TabItem";
+import Styles from "./Tabs.module.css";
+import { TabHeader } from "./TabHeader";
+import { TabItem } from "./TabItem";
+import type { TabProps } from "./Tabs.types";
 
 /**
  * Tab Component for navigating content within the same view.
@@ -10,30 +11,38 @@ import TabItem from "./TabItem";
  * @returns {JSX.Element}
  */
 
-export function Tabs({ headers = [], items = [], isVertical = false, defaultTab = 0, isVisible = true, extendedClass = "", inlineStyles = {} }) {
+export const Tabs: React.FC<TabProps> = ({
+  headers = [],
+  items = [],
+  isVertical = false,
+  defaultTab = 0,
+  isVisible = true,
+  extendedClass = "",
+  inlineStyles = {},
+}) => {
   const [activeTab, setActiveTab] = useState(defaultTab);
 
   if (!isVisible) return null;
 
   if (headers.length !== items.length) {
-    console.log("Tabs.jsx - mismatch between number of headers and number of items");
+    console.log("Tabs - mismatch between number of headers and number of items");
     return null;
   }
 
   return (
-    <div className={`tabs ${isVertical ? "tabs--vertical" : "tabs--horizontal"} ${styles.tabs} ${extendedClass}`} style={inlineStyles}>
+    <div className={`tabs ${isVertical ? "tabs--vertical" : "tabs--horizontal"} ${Styles.tabs} ${extendedClass}`} style={inlineStyles}>
       {/* Headers */}
-      <div className={`tab-header-div ${styles.tabHeaderDiv}`}>
-        {headers.map((header, idx) => (
-          <TabHeader key={idx} isCurrentTab={activeTab === idx} title={header} onClick={() => setActiveTab(idx)} />
+      <div className={`tab-header-div ${Styles.tabHeaderDiv}`}>
+        {headers.map((headerProps, idx) => (
+          <TabHeader key={idx} {...headerProps} isCurrentTab={activeTab === idx} onClick={() => setActiveTab(idx)} />
         ))}
       </div>
       {/* Contents */}
-      <div className={`tab-items-div ${styles.tabItemsDiv}`}>
-        {items.map((item, idx) => (
-          <TabItem key={idx} isCurrentTab={activeTab === idx} content={item} />
+      <div className={`tab-items-div ${Styles.tabItemsDiv}`}>
+        {items.map((itemProps, idx) => (
+          <TabItem key={idx} {...itemProps} isCurrentTab={activeTab === idx} />
         ))}
       </div>
     </div>
   );
-}
+};
