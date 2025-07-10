@@ -1,3 +1,3 @@
-import type { StandardProps } from "../../../Common/Types/standard.types";
+import type { StandardProps } from "../../Common/Types/standard.types";
 
-export interface AccordionProps extends StandardProps {}
+export interface BadgeProps extends StandardProps {}
