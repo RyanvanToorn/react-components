@@ -1,4 +1,22 @@
 /* Root ~ Any class in this .module.css file is scoped to the component (CSS Modules) */
-.avatar {
-  display: block;
+.Avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.AvatarSmall {
+  width: var(--size-s);
+  height: var(--size-s);
+}
+
+.AvatarMedium {
+  width: var(--size-m);
+  height: var(--size-m);
+}
+
+.AvatarLarge {
+  width: var(--size-l);
+  height: var(--size-l);
 }
