@@ -1,3 +1,9 @@
-import type { StandardProps } from "../../../Common/Types/standard.types";
+import type { StandardProps } from "../../Common/Types/standard.types";
 
-export interface AccordionProps extends StandardProps {}
+export type ToastType = "Success" | "Warning" | "Error" | "Information";
+
+export interface ToastProps extends StandardProps {
+  message: string;
+  type?: ToastType;
+  duration?: number;
+}
