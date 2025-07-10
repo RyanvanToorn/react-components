@@ -1,3 +1,22 @@
 /* Root ~ Any class in this .module.css file is scoped to the component (CSS Modules) */
-.Accordion {
+.Spacer {
+  color: var(--color-neutral-3);
+}
+
+.HorizontalSpacer {
+  height: var(--space-s);
+  width: 100%;
+}
+
+.VerticalSpacer {
+  width: var(--space-s);
+  height: 100%;
+}
+
+.HorizontalSpacer .SpacerLine {
+  padding: var(--space-s) 0;
+}
+
+.VerticalSpacer .SpacerLine {
+  padding: 0 var(--space-s);
 }
