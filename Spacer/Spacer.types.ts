@@ -1,3 +1,6 @@
-import type { StandardProps } from "../../../Common/Types/standard.types";
+import type { StandardProps } from "../../Common/Types/standard.types";
 
-export interface AccordionProps extends StandardProps {}
+export interface SpacerProps extends StandardProps {
+  isHorizontal?: boolean;
+  lineWidth?: number;
+}
