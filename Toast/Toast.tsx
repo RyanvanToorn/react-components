@@ -10,12 +10,28 @@ import type { ToastProps } from "./Toast.types";
  * @returns {JSX.Element}
  */
 
-export const Toast: React.FC<ToastProps> = ({ type = "info", message = "", duration = 3000, extendedClass = "", inlineStyles = {}, isVisible = true }) => {
+export const Toast: React.FC<ToastProps> = ({ type = "info", message = "", onClose, extendedClass = "", inlineStyles = {}, isVisible = true }) => {
   if (!isVisible) return null;
 
+  const typeClass =
+    type === "info"
+      ? Styles.ToastInfo
+      : type === "success"
+      ? Styles.ToastSuccess
+      : type === "error"
+      ? Styles.ToastError
+      : type === "warning"
+      ? Styles.ToastWarning
+      : "";
+
   return (
-    <div className={`${Styles.Toast} toast toast-${type.toLowerCase()} ${extendedClass}`} style={inlineStyles} role="alert" aria-live="assertive">
-      {message}
+    <div className={`${Styles.Toast} toast ${extendedClass} ${typeClass}`} style={inlineStyles} role="alert" aria-live="assertive">
+      <span>{message}</span>
+      {onClose && (
+        <button className={Styles.ToastCloseButton} onClick={onClose} aria-label="Close">
+          &times;
+        </button>
+      )}
     </div>
   );
 };

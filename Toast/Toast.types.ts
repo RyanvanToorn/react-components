@@ -6,4 +6,5 @@ export interface ToastProps extends StandardProps {
   message: string;
   type?: ToastType;
   duration?: number;
+  onClose?: () => void;
 }
