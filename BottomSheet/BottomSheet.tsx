@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./BottomSheet.module.css";
 import type { BottomSheetProps } from "./BottomSheet.types";
 
@@ -15,15 +15,29 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
   headerContent = [],
   content = [],
   footerContent = [],
+  hasCloseButton = true,
   isVisible = true,
   extendedClass = "",
   inlineStyles = {},
 }) => {
-  if (!isVisible) return null;
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(isOpen);
+
+  useEffect(() => {
+    setIsBottomSheetOpen(isOpen);
+  }, [isOpen]);
+
+  function closeBottomSheet() {
+    setIsBottomSheetOpen(false);
+  }
+
+  if (!isVisible || !isBottomSheetOpen) return null;
 
   return (
     <div className={`${Styles.BottomSheet} bottom-sheet ${extendedClass} ${isOpen ? Styles.BottomSheetOpen : Styles.BottomSheetClosed}`} style={inlineStyles}>
-      <div className={Styles.BottomSheetHeader}>{headerContent}</div>
+      <div className={Styles.BottomSheetHeader}>
+        <div className={Styles.BottomSheetCloseButton}> X </div>
+        {headerContent}
+      </div>
       <div className={Styles.BottomSheetContent}>{content}</div>
       <div className={Styles.BottomSheetFooter}>{footerContent}</div>
     </div>

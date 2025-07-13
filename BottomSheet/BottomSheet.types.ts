@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 
 export interface BottomSheetProps extends StandardProps {
   isOpen?: boolean;
-  onClose: () => {};
+  onClose?: () => {};
+  hasCloseButton?: boolean;
   headerContent?: ReactNode;
   content?: ReactNode;
   footerContent?: ReactNode;
