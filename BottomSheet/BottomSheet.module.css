@@ -1,4 +1,14 @@
 /* Root ~ Any class in this .module.css file is scoped to the component (CSS Modules) */
-.bottomSheet {
+.BottomSheet {
   display: block;
+}
+
+.BottomSheetOpen {
+  max-height: 100dvh;
+  min-height: 33dvh;
+  width: 100dvw;
+}
+
+.BottomSheetClosed {
+  height: 0px;
 }
