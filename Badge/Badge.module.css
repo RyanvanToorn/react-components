@@ -1,4 +1,12 @@
 /* Root ~ Any class in this .module.css file is scoped to the component (CSS Modules) */
 .Badge {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BadgeTop {
+}
+
+.BadgeBottom {
 }
