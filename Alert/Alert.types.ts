@@ -1,3 +1,9 @@
-import type { StandardProps } from "../../../Common/Types/standard.types";
+import type { StandardProps } from "../../Common/Types/standard.types";
 
-export interface AccordionProps extends StandardProps {}
+export type AlertType = "Success" | "Warning" | "Error" | "Information";
+
+export interface AlertProps extends StandardProps {
+  message: string;
+  type?: AlertType;
+  duration?: number;
+}
