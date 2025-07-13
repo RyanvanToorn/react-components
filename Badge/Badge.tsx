@@ -4,7 +4,7 @@ import type { BadgeProps } from "./Badge.types";
 
 /**
  * Badge Component
- *
+ * Displays it's child content with a counter/badge above to indicate a count.
  * @param {object} props - Component props
  * @returns {JSX.Element}
  */
