@@ -1,3 +1,19 @@
 /* Root ~ Any class in this .module.css file is scoped to the component (CSS Modules) */
-.Accordion {
+.Sidebar {
+}
+
+.SidebarHeader {
+}
+
+.SidebarFooter {
+}
+
+.SidebarOpen {
+  min-width: 33dvw;
+  height: 100dvh;
+}
+
+.SidebarClosed {
+  width: 0;
+  display: none;
 }
