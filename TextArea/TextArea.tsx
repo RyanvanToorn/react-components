@@ -28,7 +28,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
       disabled={!isEnabled}
       onChange={onChange}
       value={value}
-      className={`${Styles.Banner} text-area ${extendedClass} ${isResizable ? Styles.TextAreaResizable : Styles.TextAreaNonResizable}`}
+      className={`${Styles.TextArea} text-area ${extendedClass} ${isResizable ? Styles.TextAreaResizable : Styles.TextAreaNonResizable}`}
       style={inlineStyles}
     ></textarea>
   );
